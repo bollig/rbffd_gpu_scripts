@@ -6,9 +6,15 @@ EXTENSION=${FILE_NAME##*.}
 FILE_NAME_NO_EXT=${FILE_NAME%.*}
 
 echo "Auto-trimming image..."
-if [ "${EXTENSION}" != ".pdf" ]
+if [ "${EXTENSION}" != "pdf" ]
 then
     echo "(Warning! Converting from ${EXTENSION} to pdf format)"
+fi
+
+if [ "${EXTENSION}" == "png" ]
+then
+    convert ${FILE_NAME} -compress Zip ${FILE_NAME_NO_EXT}.pdf
+    FILE_NAME=${FILE_NAME_NO_EXT}.pdf
 fi
 
 # Trims the sides and converts to PDF
