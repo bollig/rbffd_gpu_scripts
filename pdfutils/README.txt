@@ -28,3 +28,37 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+==============================
+Todays Date: October 5th, 2011 
+==============================
+Version: v0.1
+==============================
+
+What is this?: 
+==============
+    auto-trim.sh is a bash script written for OSX to automatically crop images
+    to the minimum bounding box. In many images, we find an excess of white
+    space or background information, and we need to crop this out when
+    embedding the images into a publication. This script simplifies the task. 
+
+
+Usage: 
+======
+    # Run the script on any image format (outputs "trimmed_<FILE_NAME>.pdf")
+    <PATH_TO_SCRIPT>/auto-trim.sh file.pdf
+
+    # Check the output
+    open trimed_file.pdf
+
+
+Required Software (To Run): 
+===========================
+    OSX 10.6 (With Automator.app installed)
+    ImageMagick "convert" command (NOTE: install ImageMagick via Homebrew, MacPorts, or Fink)
+
+
+Supported Input Formats: 
+========================
+    We use ImageMagick to convert images to PDF. Therefore, any image format
+    supported by ImageMagick. The script has been verified to work on PNG, JPG,
+    EPS, and PDF images. 
