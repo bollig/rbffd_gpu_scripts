@@ -104,7 +104,7 @@ linewidth = 1;
 fontsize = 18;
 
 figure;
-set(gcf, 'Position', [100, 900, 1024, 440]);
+set(gcf, 'Position', [ 100         542        1122         542]);
 % Plot RBFs under solution point stems
 subplot(1,2,1);
 %figure(1)
@@ -126,9 +126,9 @@ set(gcf,'colormap',invgray);
 set(gca,'Box','off');
 %axis([-2 2 -2 2 1 3.0]);
 %title('');
-xlabel('x');
-ylabel('y');
-zlab = sprintf('%s,  (%s = %g)', '$\phi (r)=e^{-(\epsilon r)^2} $', '$\epsilon$', epsilon);
+xlabel('$x$','Interpreter','Latex','FontSize',24);
+ylabel('$y$','Interpreter','Latex','FontSize',24);
+zlab = sprintf('%s,  (%s = %g)', '$\phi_j (\epsilon||\mathbf{x}-\mathbf{x}_j||)=e^{-(\epsilon ||\mathbf{x}-\mathbf{x}_j||)^2} $', '$\epsilon$', epsilon);
 title(zlab, 'Interpreter', 'Latex','FontSize',24);
 axis tight
 grid on; 
@@ -202,13 +202,24 @@ invgray = flipud(get(gcf,'colormap'));
 set(gcf,'colormap',invgray);
 %axis([-2 2 -2 2 1 3.0]);
 %title('');
-xlabel('x');
-ylabel('y');
-title('$\hat{f}_N = \sum_{j=1}^{N} w_j \Phi_j(r)$', 'Interpreter', 'latex','FontSize',24);
+xlabel('$x$','Interpreter','Latex','FontSize',24);
+ylabel('$y$','Interpreter','Latex','FontSize',24);
+title('$\hat{f}_N = \sum_{j=1}^{N} w_j \phi_j (\epsilon||\mathbf{x}-\mathbf{x}_j||)$', 'Interpreter', 'latex','FontSize',24);
 axis tight
 grid on; 
 view(3);
 pbaspect([1 1 0.65])
+
+% resize the window to most of my laptop screen
+%set(gcf,'Units', 'normalized'); 
+%set(gcf,'Position',[0 0 0.5 1]);
+% Get the window size in terms of inches of realestate
+set(gcf,'Units','inches');
+figpos = get(gcf,'Position');
+% Change the paper size to match the window size
+set(gcf,'PaperUnits','inches','PaperPosition',figpos)
+print -deps2 interpolate2D_ga__m.eps
+
 end
 
 
