@@ -22,5 +22,10 @@ for i = 1:N
     end
 end
 spy(A, 5)
+set(gcf,'Position',[100 100 700 650])
+%plot_pos = get(gca,'Position');
+set(gca,'Unit','normalized','Position',[0.15 0.125 0.825 0.8],'XTickLabelMode', 'auto');
+
+% Print to EPS with "print -depsc test.eps" 
 
 end
