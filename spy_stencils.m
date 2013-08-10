@@ -17,10 +17,11 @@ N = size(stencil_list, 1);
 st = size(stencil_list,2); 
 A = spalloc(N, N, st * N);
 for i = 1:N
-    for j = 1:st
-        A(i,stencil_list(i,j)) = 1; 
-    end
+%    for j = 1:st
+        A(i,stencil_list(i,1:st)) = 1; 
+    %end
 end
+set(gca, 'FontSize', 18);
 spy(A, 5)
 set(gcf,'Position',[100 100 700 650])
 %plot_pos = get(gca,'Position');
